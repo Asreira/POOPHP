@@ -36,45 +36,47 @@
  * @author Alicia
  */
 class coche {
-    private $nBastidor;
-    private $nMarchas;
+    private $Nbastidor;
+    private $Nmarchas;
     private $marcha_actual;
-    private $vMax;
-    private $vActual;
+    private $Vmax;
+    private $Vactual;
     private $power;
     
-    
+    function __construct() {
+        $this->Nmarchas = 6;
+        $this->Vmax = 350;
+    }
     
     function subirVelocidad($uds=20) {
-        if ($uds < 0 || $uds > 250) {
+        if ($uds < 0 || $uds > $this->Vmax) {
            return -1;
         }
-        $this->vActual += $uds;
+        $this->Vactual = $uds;
+        return "La velocidad actual es: ".$this->Vactual;
     }
     
     function bajarVelocidad($uds=20) {
-        if ($uds < 0 || $uds > 250) {
+        if ($uds < 0 || $uds > $this->Vactual) {
             return -1;
         }
-        if ($uds == 0) {
-            $this->vActual = $uds;
-        } else {
-           $this->vActual -= $uds; 
-        }
-        
+        $this->Vactual = $uds;
+        return "La velocidad actual es: ".$this->Vactual;
     }
     
     function subirMarcha($uds=1) {
-        if ($uds < 0 || $uds < $this->marcha_actual || $uds > 6) {
+        if ($uds < 0 || $uds < $this->marcha_actual || $uds > $this->Nmarchas) {
             return -1;
         }
         $this->marcha_actual += $uds;
+        return "La marcha actual es: ".$this->marcha_actual;
     }
     
     function bajarMarcha($uds=1) {
         if ($uds < 0 || $uds > $this->marcha_actual) {
             return -1;
         }
-        $this->marcha_actual -= $uds;
+        $this->marcha_actual = $uds;
+        return "La marcha actual es: ".$this->marcha_actual;
     }
 }
